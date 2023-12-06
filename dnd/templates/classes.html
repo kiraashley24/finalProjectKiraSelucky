@@ -1,0 +1,13 @@
+<!-- dnd/templates/classes.html -->
+{% extends 'base.html' %}
+
+{% block title %}D&D - Classes{% endblock %}
+
+{% block content %}
+    <h1>Classes</h1>
+    <ul>
+        {% for dnd_class in classes %}
+            <li>{{ dnd_class.name }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
