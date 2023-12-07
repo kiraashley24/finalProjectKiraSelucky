@@ -20,7 +20,7 @@
         <tbody>
             {% for dnd_class in classes %}
                 <tr>
-                    <td>{{ dnd_class.name }}</td>
+                    <td><a href="{% url 'dnd:class_detail' class_name=dnd_class.name %}">{{ dnd_class.name }}</a></td>
                     <td>
                         {% if dnd_class.description %}
                             {{ dnd_class.description }}

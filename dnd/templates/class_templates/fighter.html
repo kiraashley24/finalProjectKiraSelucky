@@ -1,0 +1,18 @@
+<!-- barbarian.html -->
+{% extends 'base.html' %}
+
+{% block title %}Fighter Details{% endblock %}
+
+{% block content %}
+    <h1>{{ class.name }}</h1>
+    <p>Description: {{ class.description }}</p>
+    <p>Hit Die: {{ class.hit_die }}</p>
+    <p>Primary Ability: {{ class.primary_ability }}</p>
+    <p>Saving Throw Proficiencies: {{ class.saving_throw_proficiencies }}</p>
+    <p>Armor Proficiencies: {{ class.armor_proficiencies }}</p>
+    <p>Weapon Proficiencies: {{ class.weapon_proficiencies }}</p>
+    <!-- Add more details as needed -->
+
+    <!-- Include additional content specific to Barbarian class -->
+    <!-- For example, specific abilities, traits, etc. -->
+{% endblock %}
