@@ -1,9 +1,20 @@
-<!-- index.html -->
+<!-- charbuild.html -->
 {% extends 'base.html' %}
 
-{% block title %}D&D - Home{% endblock %}
+{% block title %}Character Builder{% endblock %}
 
 {% block content %}
-    <h1>Welcome to the D&D Webpage</h1>
-    <p>Explore the world of Dungeons & Dragons.</p>
+    <h1>Character Builder</h1>
+
+    {% if user_data %}
+        <p>Name: {{ user_data.name }}</p>
+        <p>Age: {{ user_data.age }}</p>
+        <!-- Include other fields as needed -->
+    {% else %}
+        <p>No user data available.</p>
+    {% endif %}
+
+    {% if error_message %}
+        <p>Error: {{ error_message }}</p>
+    {% endif %}
 {% endblock %}

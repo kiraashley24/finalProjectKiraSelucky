@@ -115,7 +115,6 @@ class PaladinDetail(models.Model):
     level = models.IntegerField()
     proficiency_bonus = models.CharField(max_length=10)
     features = models.TextField()
-    spells_known = models.IntegerField()
     spell_1st = models.IntegerField(null=True, blank=True)
     spell_2nd = models.IntegerField(null=True, blank=True)
     spell_3rd = models.IntegerField(null=True, blank=True)
