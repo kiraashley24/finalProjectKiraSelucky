@@ -14,8 +14,13 @@ class Race(models.Model):
         return self.name
 
 class DndClass(models.Model):
-    name = models.CharField(max_length=50)
-    description = models.TextField(null=True, blank=True)
+    name = models.CharField(max_length=50, null=True, blank=True)
+    description = models.CharField(max_length=255, null=True, blank=True)
+    hit_die = models.CharField(max_length=50, null=True, blank=True)
+    primary_ability = models.CharField(max_length=50, null=True, blank=True)
+    saving_throw_proficiencies = models.CharField(max_length=255, null=True, blank=True)
+    armor_proficiencies = models.CharField(max_length=255, null=True, blank=True)
+    weapon_proficiencies = models.CharField(max_length=255, null=True, blank=True)
 
     def __str__(self):
         return self.name

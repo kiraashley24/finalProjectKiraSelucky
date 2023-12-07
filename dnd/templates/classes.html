@@ -1,9 +1,40 @@
-<!-- index.html -->
+<!-- classes.html -->
 {% extends 'base.html' %}
 
-{% block title %}D&D - Home{% endblock %}
+{% block title %}D&D - Classes{% endblock %}
 
 {% block content %}
-    <h1>Welcome to the D&D Webpage</h1>
-    <p>Explore the world of Dungeons & Dragons.</p>
+    <h1>Classes</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Hit Die</th>
+                <th>Primary Ability</th>
+                <th>Saving Throw Proficiencies</th>
+                <th>Armor Proficiencies</th>
+                <th>Weapon Proficiencies</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dnd_class in classes %}
+                <tr>
+                    <td>{{ dnd_class.name }}</td>
+                    <td>
+                        {% if dnd_class.description %}
+                            {{ dnd_class.description }}
+                        {% else %}
+                            No description available.
+                        {% endif %}
+                    </td>
+                    <td>{{ dnd_class.hit_die }}</td>
+                    <td>{{ dnd_class.primary_ability }}</td>
+                    <td>{{ dnd_class.saving_throw_proficiencies }}</td>
+                    <td>{{ dnd_class.armor_proficiencies }}</td>
+                    <td>{{ dnd_class.weapon_proficiencies }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
