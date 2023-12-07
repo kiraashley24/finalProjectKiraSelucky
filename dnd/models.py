@@ -79,7 +79,6 @@ class DruidDetail(models.Model):
     proficiency_bonus = models.CharField(max_length=10)
     features = models.TextField()
     cantrips_known = models.IntegerField()
-    spells_known = models.IntegerField()
     spell_1st = models.IntegerField(null=True, blank=True)
     spell_2nd = models.IntegerField(null=True, blank=True)
     spell_3rd = models.IntegerField(null=True, blank=True)

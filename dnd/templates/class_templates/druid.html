@@ -16,7 +16,6 @@
                     <th>Proficiency Bonus</th>
                     <th>Features</th>
                     <th>Cantrips Known</th>
-                    <th>Spells Known</th>
                     <th>1st Level Spells</th>
                     <th>2nd Level Spells</th>
                     <th>3rd Level Spells</th>
@@ -35,7 +34,6 @@
                         <td>{{ detail.proficiency_bonus }}</td>
                         <td>{{ detail.features }}</td>
                         <td>{{ detail.cantrips_known }}</td>
-                        <td>{{ detail.spells_known }}</td>
                         <td>{% if detail.spell_1st %}{{ detail.spell_1st }}{% else %}-{% endif %}</td>
                         <td>{% if detail.spell_2nd %}{{ detail.spell_2nd }}{% else %}-{% endif %}</td>
                         <td>{% if detail.spell_3rd %}{{ detail.spell_3rd }}{% else %}-{% endif %}</td>

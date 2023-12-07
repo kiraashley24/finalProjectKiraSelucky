@@ -10,7 +10,15 @@
     {% if class_details %}
         <h2>{{ class.name }} Details</h2>
         <table class="table">
-            <!-- ... Table headers ... -->
+            <thead>
+                <tr>
+                    <th>Level</th>
+                    <th>Proficiency Bonus</th>
+                    <th>Features</th>
+                    <th>Rages</th>
+                    <th>Rage Damage</th>
+                </tr>
+            </thead>
             <tbody>
                 {% for detail in class_details %}
                     <tr>
