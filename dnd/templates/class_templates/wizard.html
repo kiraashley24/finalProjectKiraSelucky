@@ -4,15 +4,51 @@
 {% block title %}Wizard Details{% endblock %}
 
 {% block content %}
+{% block content %}
     <h1>{{ class.name }}</h1>
-    <p>Description: {{ class.description }}</p>
-    <p>Hit Die: {{ class.hit_die }}</p>
-    <p>Primary Ability: {{ class.primary_ability }}</p>
-    <p>Saving Throw Proficiencies: {{ class.saving_throw_proficiencies }}</p>
-    <p>Armor Proficiencies: {{ class.armor_proficiencies }}</p>
-    <p>Weapon Proficiencies: {{ class.weapon_proficiencies }}</p>
-    <!-- Add more details as needed -->
+    <!-- ... Display other class details ... -->
 
-    <!-- Include additional content specific to Barbarian class -->
-    <!-- For example, specific abilities, traits, etc. -->
+    {% if class_details %}
+        <h2>{{ class.name }} Details</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Level</th>
+                    <th>Proficiency Bonus</th>
+                    <th>Features</th>
+                    <th>Cantrips Known</th>
+                    <th>1st Level Spells</th>
+                    <th>2nd Level Spells</th>
+                    <th>3rd Level Spells</th>
+                    <th>4th Level Spells</th>
+                    <th>5th Level Spells</th>
+                    <th>6th Level Spells</th>
+                    <th>7th Level Spells</th>
+                    <th>8th Level Spells</th>
+                    <th>9th Level Spells</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for detail in class_details %}
+                    <tr>
+                        <td>{{ detail.level }}</td>
+                        <td>{{ detail.proficiency_bonus }}</td>
+                        <td>{{ detail.features }}</td>
+                        <td>{{ detail.cantrips_known }}</td>
+                        <td>{% if detail.spell_1st %}{{ detail.spell_1st }}{% else %}-{% endif %}</td>
+                        <td>{% if detail.spell_2nd %}{{ detail.spell_2nd }}{% else %}-{% endif %}</td>
+                        <td>{% if detail.spell_3rd %}{{ detail.spell_3rd }}{% else %}-{% endif %}</td>
+                        <td>{% if detail.spell_4th %}{{ detail.spell_4th }}{% else %}-{% endif %}</td>
+                        <td>{% if detail.spell_5th %}{{ detail.spell_5th }}{% else %}-{% endif %}</td>
+                        <td>{% if detail.spell_6th %}{{ detail.spell_6th }}{% else %}-{% endif %}</td>
+                        <td>{% if detail.spell_7th %}{{ detail.spell_7th }}{% else %}-{% endif %}</td>
+                        <td>{% if detail.spell_8th %}{{ detail.spell_8th }}{% else %}-{% endif %}</td>
+                        <td>{% if detail.spell_9th %}{{ detail.spell_9th }}{% else %}-{% endif %}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No {{ class.name }} details available.</p>
+    {% endif %}
 {% endblock %}

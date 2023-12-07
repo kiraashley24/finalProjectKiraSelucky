@@ -5,14 +5,29 @@
 
 {% block content %}
     <h1>{{ class.name }}</h1>
-    <p>Description: {{ class.description }}</p>
-    <p>Hit Die: {{ class.hit_die }}</p>
-    <p>Primary Ability: {{ class.primary_ability }}</p>
-    <p>Saving Throw Proficiencies: {{ class.saving_throw_proficiencies }}</p>
-    <p>Armor Proficiencies: {{ class.armor_proficiencies }}</p>
-    <p>Weapon Proficiencies: {{ class.weapon_proficiencies }}</p>
-    <!-- Add more details as needed -->
+    <!-- ... Display other class details ... -->
 
-    <!-- Include additional content specific to Barbarian class -->
-    <!-- For example, specific abilities, traits, etc. -->
+    {% if class_details %}
+        <h2>{{ class.name }} Details</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Level</th>
+                    <th>Proficiency Bonus</th>
+                    <th>Features</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for detail in class_details %}
+                    <tr>
+                        <td>{{ detail.level }}</td>
+                        <td>{{ detail.proficiency_bonus }}</td>
+                        <td>{{ detail.features }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No {{ class.name }} details available.</p>
+    {% endif %}
 {% endblock %}
