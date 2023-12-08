@@ -8,7 +8,7 @@ class CharacterForm(forms.ModelForm):
     classes = forms.ModelChoiceField(queryset=DndClass.objects.all(), empty_label='---', required=False)
     name = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Enter Character Name'}), required=False)
     age = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Enter Character Age'}), required=False)
-    backstory = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Write Character Backstory'}), required=False)
+    backstory = forms.CharField(widget=forms.Textarea(attrs={'rows': 4, 'cols': 50, 'placeholder': 'Write Character Backstory'}), required=False)
 
     class Meta:
         model = Charbuild
