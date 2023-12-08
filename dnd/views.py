@@ -4,6 +4,7 @@ from .models import Race, DndClass, BarbarianDetail, BardDetail, ClericDetail, D
 import requests
 from .forms import CharacterForm
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from requests.exceptions import HTTPError, RequestException, JSONDecodeError
 
 
@@ -62,19 +63,30 @@ def charbuild(request):
         form = CharacterForm(request.POST)
         if form.is_valid():
             submit_action = request.POST.get('submit_action')
-            print(f"Submit Action: {submit_action}")
 
             if submit_action == 'Generate Random Name and Age':
                 initial_values = generate_random_name_and_age()
-                print(f"Initial Values: {initial_values}")
                 form = CharacterForm(initial=initial_values)  # Update form with initial values
             elif submit_action == 'Create Character':
                 form.save()  # Save the form data to the database
-                return redirect('index')  # Redirect to the desired page after form submission
+                character_data = {
+                    'name': form.cleaned_data['name'],
+                    'age': form.cleaned_data['age'],
+                    'race': form.cleaned_data['race'],
+                    'classes': form.cleaned_data['classes'],
+                    'backstory': form.cleaned_data['backstory'],
+                }
+
+                return render(request, 'character.html', {'character_data': character_data})
+        else:
+            # Display error messages for missing fields
+            for field, errors in form.errors.items():
+                messages.error(request, f"{field.capitalize()}: {', '.join(errors)}")
     else:
         form = CharacterForm()
 
     return render(request, 'charbuild.html', {'form': form})
+
 def generate_random_name_and_age():
     try:
         url = "https://random-user-data.p.rapidapi.com/getuser"

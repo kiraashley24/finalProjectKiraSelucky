@@ -1,9 +1,14 @@
-<!-- index.html -->
+<!-- character.html -->
 {% extends 'base.html' %}
 
-{% block title %}D&D - Home{% endblock %}
-
 {% block content %}
-    <h1>Welcome to the D&D Webpage</h1>
-    <p>Explore the world of Dungeons & Dragons.</p>
+    <h1>Character Details</h1>
+
+    <p>Name: {{ character_data.name }}</p>
+    <p>Age: {{ character_data.age }}</p>
+    <p>Race: {{ character_data.race }}</p>
+    <p>Class: {{ character_data.classes }}</p>
+    <p>Backstory: {{ character_data.backstory }}</p>
+
+    <!-- Add more fields as needed -->
 {% endblock %}
