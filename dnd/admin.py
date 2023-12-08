@@ -14,7 +14,7 @@ class BarbarianDetailAdmin(admin.ModelAdmin):
     list_display = ('level', 'proficiency_bonus', 'features', 'rages', 'rage_damage')
 
 class CharbuildAdmin(admin.ModelAdmin):
-    list_display = ('race', 'classes', 'backstory')
+    list_display = ('name', 'age', 'race', 'classes', 'backstory')
 
 
 

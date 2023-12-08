@@ -1,8 +1,9 @@
 from django.db import models
 
 
-
 class Charbuild(models.Model):
+    name = models.CharField(max_length=50, null=True, blank=True)
+    age = models.IntegerField(null=True, blank=True)
     race = models.CharField(max_length=50, null=True, blank=True)
     classes = models.CharField(max_length=50, null=True, blank=True)
     backstory = models.CharField(max_length=50, null=True, blank=True)

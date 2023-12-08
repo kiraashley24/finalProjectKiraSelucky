@@ -84,37 +84,12 @@ def character(request, character_id):
 
 
 def charbuild(request):
-    try:
-        # Retrieve random user data
-        url = "https://random-user-data.p.rapidapi.com/getuser"
-        headers = {
-            "X-RapidAPI-Key": "303803f6d2msh62816098927e1e5p1143a8jsn4e212fe65712",
-            "X-RapidAPI-Host": "random-user-data.p.rapidapi.com"
-        }
+    if request.method == 'POST':
+        form = CharacterForm(request.POST)
+        if form.is_valid():
+            form.save()  # Save the form data to the database
+            return redirect('index')  # Redirect to the desired page after form submission
+    else:
+        form = CharacterForm()
 
-        response = requests.get(url, headers=headers)
-        response.raise_for_status()
-
-        data = response.json()
-        user_data = {
-            "name": data.get("name"),
-            "age": data.get("age"),
-            # Include other fields as needed
-        }
-
-        # Your existing form handling logic
-        if request.method == 'POST':
-            form = CharacterForm(request.POST)
-            if form.is_valid():
-                form.save()  # Save the form data to the database
-                return redirect('index')  # Redirect to the desired page after form submission
-        else:
-            form = CharacterForm()
-
-        return render(request, 'charbuild.html', {'form': form, 'user_data': user_data})
-
-    except requests.exceptions.HTTPError as errh:
-        return render(request, "charbuild.html", {"error_message": f"HTTP Error: {response.status_code} - {response.text}"})
-    except requests.exceptions.RequestException as err:
-        return render(request, "charbuild.html", {"error_message": f"Request Exception: {err}"})
-
+    return render(request, 'charbuild.html', {'form': form})
