@@ -61,18 +61,20 @@ def charbuild(request):
     if request.method == 'POST':
         form = CharacterForm(request.POST)
         if form.is_valid():
-            form.save()  # Save the form data to the database
-            return redirect('index')  # Redirect to the desired page after form submission
+            submit_action = request.POST.get('submit_action')
+            print(f"Submit Action: {submit_action}")
+
+            if submit_action == 'Generate Random Name and Age':
+                initial_values = generate_random_name_and_age()
+                print(f"Initial Values: {initial_values}")
+                form = CharacterForm(initial=initial_values)  # Update form with initial values
+            elif submit_action == 'Create Character':
+                form.save()  # Save the form data to the database
+                return redirect('index')  # Redirect to the desired page after form submission
     else:
         form = CharacterForm()
 
-        # Fetch random name and age from your API
-        name, age = generate_random_name_and_age()
-        form.fields['name'].initial = name
-        form.fields['age'].initial = age
-
     return render(request, 'charbuild.html', {'form': form})
-
 def generate_random_name_and_age():
     try:
         url = "https://random-user-data.p.rapidapi.com/getuser"
@@ -88,7 +90,7 @@ def generate_random_name_and_age():
         name = data.get("name")
         age = data.get("age")
 
-        return name, age
+        return {'name': name, 'age': age}
     except requests.exceptions.HTTPError as errh:
         # Handle HTTP errors
         print(f"HTTP Error: {response.status_code} - {response.text}")
@@ -97,4 +99,4 @@ def generate_random_name_and_age():
         print(f"Request Exception: {err}")
 
     # Return default values if an error occurs
-    return "John Doe", "25"
+    return {'name': "John Doe", 'age': "25"}

@@ -9,7 +9,7 @@ class Charbuild(models.Model):
     backstory = models.CharField(max_length=50, null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return f"{self.name} - {self.dnd_class}"
 
 class Race(models.Model):
     name = models.CharField(max_length=50, null=True, blank=True)

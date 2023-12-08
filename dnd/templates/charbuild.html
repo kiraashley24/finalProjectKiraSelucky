@@ -1,14 +1,13 @@
 <!-- charbuild.html -->
 {% extends 'base.html' %}
 
-{% block title %}Character Builder{% endblock %}
-
 {% block content %}
     <h1>Character Builder</h1>
 
     <form method="post" action="{% url 'dnd:charbuild' %}">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Create Character">
+        <input type="submit" name="submit_action" value="Create Character" class="btn btn-primary">
+        <input type="submit" name="submit_action" value="Generate Random Name and Age" class="btn btn-secondary" formnovalidate>
     </form>
 {% endblock %}
