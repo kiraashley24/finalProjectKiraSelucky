@@ -57,31 +57,26 @@ def character(request, character_id):
     # Add logic to fetch details of a specific character
     return render(request, 'character.html', {'character_id': character_id})
 
-
 def charbuild(request):
     if request.method == 'POST':
         form = CharacterForm(request.POST)
-        if form.is_valid():
-            submit_action = request.POST.get('submit_action')
+        submit_action = request.POST.get('submit_action')
 
-            if submit_action == 'Generate Random Name and Age':
-                initial_values = generate_random_name_and_age()
-                form = CharacterForm(initial=initial_values)  # Update form with initial values
-            elif submit_action == 'Create Character':
-                form.save()  # Save the form data to the database
-                character_data = {
-                    'name': form.cleaned_data['name'],
-                    'age': form.cleaned_data['age'],
-                    'race': form.cleaned_data['race'],
-                    'classes': form.cleaned_data['classes'],
-                    'backstory': form.cleaned_data['backstory'],
-                }
+        if submit_action == 'Generate Random Name and Age':
+            initial_values = generate_random_name_and_age()
+            form = CharacterForm(initial=initial_values)
+        elif submit_action == 'Create Character' and form.is_valid():
+            form.save()
+            character_data = {
+                'name': form.cleaned_data['name'],
+                'age': form.cleaned_data['age'],
+                'race': form.cleaned_data['race'],
+                'classes': form.cleaned_data['classes'],
+                'backstory': form.cleaned_data['backstory'],
+            }
 
-                return render(request, 'character.html', {'character_data': character_data})
-        else:
-            # Display error messages for missing fields
-            for field, errors in form.errors.items():
-                messages.error(request, f"{field.capitalize()}: {', '.join(errors)}")
+            return render(request, 'character.html', {'character_data': character_data})
+
     else:
         form = CharacterForm()
 
