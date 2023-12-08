@@ -52,32 +52,6 @@ def class_detail(request, class_name):
     return render(request, f'class_templates/{class_name_lower}.html',
                   {'class': dnd_class, 'class_details': class_details})
 
-
-def charbuild_random(request):
-    try:
-        url = "https://random-user-data.p.rapidapi.com/getuser"
-        headers = {
-            "X-RapidAPI-Key": "303803f6d2msh62816098927e1e5p1143a8jsn4e212fe65712",
-            "X-RapidAPI-Host": "random-user-data.p.rapidapi.com"
-        }
-
-        response = requests.get(url, headers=headers)
-        response.raise_for_status()
-
-        data = response.json()
-        user_data = {
-            "name": data.get("name"),
-            "age": data.get("age"),
-            # Include other fields as needed
-        }
-
-        return render(request, "charbuild.html", {"user_data": user_data})
-    except requests.exceptions.HTTPError as errh:
-        return render(request, "charbuild.html", {"error_message": f"HTTP Error: {response.status_code} - {response.text}"})
-    except requests.exceptions.RequestException as err:
-        return render(request, "charbuild.html", {"error_message": f"Request Exception: {err}"})
-
-
 def character(request, character_id):
     # Add logic to fetch details of a specific character
     return render(request, 'character.html', {'character_id': character_id})
@@ -92,4 +66,35 @@ def charbuild(request):
     else:
         form = CharacterForm()
 
+        # Fetch random name and age from your API
+        name, age = generate_random_name_and_age()
+        form.fields['name'].initial = name
+        form.fields['age'].initial = age
+
     return render(request, 'charbuild.html', {'form': form})
+
+def generate_random_name_and_age():
+    try:
+        url = "https://random-user-data.p.rapidapi.com/getuser"
+        headers = {
+            "X-RapidAPI-Key": "303803f6d2msh62816098927e1e5p1143a8jsn4e212fe65712",
+            "X-RapidAPI-Host": "random-user-data.p.rapidapi.com"
+        }
+
+        response = requests.get(url, headers=headers)
+        response.raise_for_status()
+
+        data = response.json()
+        name = data.get("name")
+        age = data.get("age")
+
+        return name, age
+    except requests.exceptions.HTTPError as errh:
+        # Handle HTTP errors
+        print(f"HTTP Error: {response.status_code} - {response.text}")
+    except requests.exceptions.RequestException as err:
+        # Handle other request errors
+        print(f"Request Exception: {err}")
+
+    # Return default values if an error occurs
+    return "John Doe", "25"
