@@ -1,6 +1,15 @@
 from django.db import models
 
-# Create your models here.
+
+
+class Charbuild(models.Model):
+    race = models.CharField(max_length=50, null=True, blank=True)
+    classes = models.CharField(max_length=50, null=True, blank=True)
+    backstory = models.CharField(max_length=50, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
 class Race(models.Model):
     name = models.CharField(max_length=50, null=True, blank=True)
     ability_score = models.CharField(max_length=50, null=True, blank=True)
@@ -24,6 +33,14 @@ class DndClass(models.Model):
 
     def __str__(self):
         return self.name
+
+class Character(models.Model):
+    race = models.CharField(max_length=100)
+    dnd_class = models.CharField(max_length=100)
+    backstory = models.TextField()
+
+    def __str__(self):
+        return f"{self.race} - {self.dnd_class}"
 
 class BarbarianDetail(models.Model):
     level = models.IntegerField()
@@ -128,7 +145,7 @@ class RangerDetail(models.Model):
     level = models.IntegerField()
     proficiency_bonus = models.CharField(max_length=10)
     features = models.TextField()
-    spells_known = models.IntegerField()
+    spells_known = models.IntegerField(null=True, blank=True)
     spell_1st = models.IntegerField(null=True, blank=True)
     spell_2nd = models.IntegerField(null=True, blank=True)
     spell_3rd = models.IntegerField(null=True, blank=True)

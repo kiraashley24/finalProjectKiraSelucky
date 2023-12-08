@@ -6,15 +6,9 @@
 {% block content %}
     <h1>Character Builder</h1>
 
-    {% if user_data %}
-        <p>Name: {{ user_data.name }}</p>
-        <p>Age: {{ user_data.age }}</p>
-        <!-- Include other fields as needed -->
-    {% else %}
-        <p>No user data available.</p>
-    {% endif %}
-
-    {% if error_message %}
-        <p>Error: {{ error_message }}</p>
-    {% endif %}
+    <form method="post" action="{% url 'charbuild' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Create Character">
+    </form>
 {% endblock %}

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Race, DndClass, BarbarianDetail, BardDetail, ClericDetail, DruidDetail, FighterDetail, MonkDetail, PaladinDetail, RangerDetail, RogueDetail, SorcererDetail, WarlockDetail, WizardDetail
+from .models import Race, Charbuild, DndClass, BarbarianDetail, BardDetail, ClericDetail, DruidDetail, FighterDetail, MonkDetail, PaladinDetail, RangerDetail, RogueDetail, SorcererDetail, WarlockDetail, WizardDetail
 
 # Register your models here.
 class RaceAdmin(admin.ModelAdmin):
@@ -13,10 +13,14 @@ class DndClassAdmin(admin.ModelAdmin):
 class BarbarianDetailAdmin(admin.ModelAdmin):
     list_display = ('level', 'proficiency_bonus', 'features', 'rages', 'rage_damage')
 
+class CharbuildAdmin(admin.ModelAdmin):
+    list_display = ('race', 'classes', 'backstory')
+
 
 
 admin.site.register(Race, RaceAdmin)
 admin.site.register(DndClass, DndClassAdmin)
+admin.site.register(Charbuild, CharbuildAdmin)
 admin.site.register(BarbarianDetail)
 admin.site.register(BardDetail)
 admin.site.register(ClericDetail)
