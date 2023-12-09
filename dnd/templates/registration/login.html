@@ -7,6 +7,7 @@
                 <div class="card">
                     <div class="card-body" style="background-color: antiquewhite; color: darkred;">
                         <h2 class="text-center mb-4">Login</h2>
+                        <h6 class="text-center mb-4"><em>You must be logged in to build a character.</em></h6>
                         <form method="post" action="{% url 'login' %}">
                             {% csrf_token %}
                             <div class="form-group">

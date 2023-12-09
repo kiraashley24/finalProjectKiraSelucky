@@ -9,6 +9,7 @@ from requests.exceptions import HTTPError, RequestException, JSONDecodeError
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required
 
 
 def index(request):
@@ -143,4 +144,28 @@ def login_view(request):
 
     return render(request, 'registration/login.html', {'form': form})
 
+@login_required
+def charbuild(request):
+    if request.method == 'POST':
+        form = CharacterForm(request.POST)
+        submit_action = request.POST.get('submit_action')
 
+        if submit_action == 'Generate Random Name and Age':
+            initial_values = generate_random_name_and_age()
+            form = CharacterForm(initial=initial_values)
+        elif submit_action == 'Create Character' and form.is_valid():
+            form.save()
+            character_data = {
+                'name': form.cleaned_data['name'],
+                'age': form.cleaned_data['age'],
+                'race': form.cleaned_data['race'],
+                'classes': form.cleaned_data['classes'],
+                'backstory': form.cleaned_data['backstory'],
+            }
+
+            return render(request, 'character.html', {'character_data': character_data})
+
+    else:
+        form = CharacterForm()
+
+    return render(request, 'charbuild.html', {'form': form})
