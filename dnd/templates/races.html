@@ -1,10 +1,11 @@
 <!-- races.html -->
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}D&D - Races{% endblock %}
 
 {% block content %}
     <h1>Races</h1>
+    <link rel="stylesheet" type="text/css" href="{% static 'dnd/style.css' %}">
     <table class="table">
         <thead>
             <tr>

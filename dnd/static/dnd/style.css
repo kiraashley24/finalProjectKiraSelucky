@@ -12,3 +12,42 @@ body {
     background-color: red;
     padding: 10px; /* Add some padding to the banner */
 }
+
+/* Add some styling to the table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+/* Style table headers */
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #343a40;  /* Dark background color for headers */
+    color: white;
+}
+
+/* Add hover effect to table rows */
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* Alternating row colors for better readability */
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Style the "Details" link in the last column */
+.details-link {
+    color: #007bff;  /* Blue color for links */
+    text-decoration: none;
+}
+
+.details-link:hover {
+    text-decoration: underline;
+}
