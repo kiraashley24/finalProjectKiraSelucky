@@ -1,0 +1,14 @@
+body {
+    background-color: black!important;
+    color: white!important;  /* Set text color to white or another contrasting color */
+}
+
+.navbar {
+    background-color: red;
+    color: white;  /* Set text color for navbar links */
+}
+
+.banner {
+    background-color: red;
+    padding: 10px; /* Add some padding to the banner */
+}
