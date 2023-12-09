@@ -17,9 +17,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path, re_path
 from dnd.views import index
+from django.contrib.auth import views as auth_views
+from dnd.views import register
 
 urlpatterns = [
     path("dnd/", include("dnd.urls", namespace='dnd')),
     path("admin/", admin.site.urls),
     re_path(r"^$", index, name="index"),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('register/', register, name='register'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
+
 ]

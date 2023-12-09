@@ -6,6 +6,9 @@ from .forms import CharacterForm
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from requests.exceptions import HTTPError, RequestException, JSONDecodeError
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
 
 
 def index(request):
@@ -107,3 +110,37 @@ def generate_random_name_and_age():
 
     # Return default values if an error occurs
     return {'name': "John Doe", 'age': "25"}
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            messages.success(request, 'Registration successful. Welcome!')
+            return render(request, 'registration/register.html', {'registration_success': True})
+        else:
+            for error in form.errors.values():
+                messages.error(request, error[0])
+
+    else:
+        form = UserCreationForm()
+
+    return render(request, 'registration/register.html', {'form': form})
+
+def login_view(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect('charbuild.html') # redirects to charbuild page on successful login
+        else:
+            messages.error(request, 'Login failed. Please check your username and password.') # unsuccessful message
+
+    else:
+        form = AuthenticationForm()
+
+    return render(request, 'registration/login.html', {'form': form})
+
+

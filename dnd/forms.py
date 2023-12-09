@@ -11,7 +11,7 @@ class CharacterForm(forms.ModelForm):
         widget=forms.TextInput(attrs={'placeholder': 'Enter Character Age'}),
         validators=[
             MinValueValidator(1, message='Your minimum age must be 1.'),
-            MaxValueValidator(500, message='Your maximum age must be 500.')
+            MaxValueValidator(750, message='Your maximum age must be 750')
         ]
     )
     backstory = forms.CharField(widget=forms.Textarea(attrs={'rows': 4, 'cols': 50, 'placeholder': 'Write Character Backstory...'}))
