@@ -1,9 +1,26 @@
 <!-- index.html -->
 {% extends 'base.html' %}
+{% load static %}
+
 
 {% block title %}D&D - Home{% endblock %}
 
 {% block content %}
-    <h1>Welcome to the D&D Webpage</h1>
-    <p>Explore the world of Dungeons & Dragons.</p>
+     <!-- Your index page content goes here -->
+    <div class="container text-center mt-4">
+        <h1 style="color: antiquewhite;">WELCOME TO DUNGEONS & DRAGONS</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card mb-4" style="background-color: white; color: black;">
+                    <img src="{% static 'dnd/images/dndbackground1.jpg' %}" class="card-img-top" alt="home">
+                    <div class="card-body">
+                        <p>Hi there! </p>
+
+                        <p><em>Please note that you must login to build a character</em></p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
