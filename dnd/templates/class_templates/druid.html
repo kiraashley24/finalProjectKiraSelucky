@@ -1,6 +1,6 @@
 <!-- barbarian.html -->
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}Druid Details{% endblock %}
 
 {% block content %}
@@ -8,8 +8,7 @@
     <!-- ... Display other class details ... -->
 
     {% if class_details %}
-        <h2>{{ class.name }} Details</h2>
-        <table class="table">
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
             <thead>
                 <tr>
                     <th>Level</th>

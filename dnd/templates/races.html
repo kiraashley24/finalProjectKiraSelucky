@@ -6,18 +6,18 @@
 {% block content %}
     <h1>Races</h1>
     <link rel="stylesheet" type="text/css" href="{% static 'dnd/style.css' %}">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Ability Score</th>
-                <th>Lifespan</th>
-                <th>Size</th>
-                <th>Speed</th>
-                <th>Alignment</th>
-                <th>Racial Traits</th>
-            </tr>
-        </thead>
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Ability Score</th>
+                    <th>Lifespan</th>
+                    <th>Size</th>
+                    <th>Speed</th>
+                    <th>Alignment</th>
+                    <th>Racial Traits</th>
+                </tr>
+            </thead>
         <tbody>
             {% for race in races %}
                 <tr>
@@ -38,4 +38,5 @@
             {% endfor %}
         </tbody>
     </table>
+</div>
 {% endblock %}
