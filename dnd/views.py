@@ -1,3 +1,6 @@
+#INF 601 - Advanced Programming in Python
+#Kira Selucky
+#Final Project
 
 from django.shortcuts import render, get_object_or_404
 from .models import Race, DndClass, BarbarianDetail, BardDetail, ClericDetail, DruidDetail, FighterDetail, MonkDetail, PaladinDetail, RangerDetail, RogueDetail, SorcererDetail, WarlockDetail, WizardDetail

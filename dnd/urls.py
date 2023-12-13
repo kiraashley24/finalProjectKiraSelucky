@@ -1,3 +1,7 @@
+#INF 601 - Advanced Programming in Python
+#Kira Selucky
+#Final Project
+
 from django.urls import path
 from .views import index, races, classes, class_detail, charbuild, character
 

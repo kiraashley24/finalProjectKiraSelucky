@@ -1,19 +1,19 @@
 body {
     background-color: black!important;
-    color: white!important;  /* Set text color to white or another contrasting color */
+    color: white!important;
 }
 
 .navbar {
     background-color: black;
-    color: white;  /* Set text color for navbar links */
+    color: white;
 }
 
 .banner {
     background-color: red;
-    padding: 10px; /* Add some padding to the banner */
+    padding: 10px;
 }
 
-/* Add some styling to the table */
+/* Table styling */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -52,6 +52,7 @@ tr:nth-child(odd) {
     text-decoration: underline;
 }
 
+/* index card styling */
 .card {
     perspective: 1000px;
     width: 600px; /* Adjust the width as needed */
@@ -94,17 +95,16 @@ tr:nth-child(odd) {
 }
 
 
-/* Adjust styling for the character card */
+/* Character card styling*/
 .character-card {
-    width: 400px; /* Adjust the width as needed */
-    height: 400px; /* Set a specific height for the card */
-    margin: 20px auto; /* Add margin for spacing between cards */
-    padding: 20px; /* Add padding within the card to control spacing */
-    box-sizing: border-box; /* Include padding in the total height */
+    width: 400px;
+    height: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    box-sizing: border-box;
     margin-bottom: 10px;
 }
 
-/* Adjust font size, colors, and line height as needed */
 .character-card h1 {
     font-size: 24px;
     color: #333;
@@ -118,12 +118,12 @@ tr:nth-child(odd) {
     margin-bottom: 10px; /* Add some margin between text elements */
 }
 
-/* style.css */
+/* login/register card*/
 .smaller-card {
-    width: 300px; /* Adjust the width as needed */
-    height: 600px; /* Adjust the height as needed */
-    margin: 0 auto; /* Center the card horizontally */
-    margin-top: 20px; /* Add margin for spacing from the top */
+    width: 300px;
+    height: 600px;
+    margin: 0 auto;
+    margin-top: 20px;
     padding: 20px; /* Add padding within the card to control spacing */
     box-sizing: border-box; /* Include padding in the total height */
     /* Add margin to the form groups for spacing */

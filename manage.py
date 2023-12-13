@@ -1,4 +1,8 @@
 #!/usr/bin/env python
+#INF 601 - Advanced Programming in Python
+#Kira Selucky
+#Final Project
+
 """Django's command-line utility for administrative tasks."""
 import os
 import sys

@@ -1,7 +1,10 @@
+#INF 601 - Advanced Programming in Python
+#Kira Selucky
+#Final Project
 from django.contrib import admin
 from .models import Race, Charbuild, DndClass, BarbarianDetail, BardDetail, ClericDetail, DruidDetail, FighterDetail, MonkDetail, PaladinDetail, RangerDetail, RogueDetail, SorcererDetail, WarlockDetail, WizardDetail
 
-# Register your models here.
+# Models
 class RaceAdmin(admin.ModelAdmin):
     list_display = ('name', 'ability_score', 'lifespan', 'size', 'speed', 'alignment', 'racial_traits')
     search_fields = ['name', 'ability_score', 'lifespan', 'size', 'speed', 'alignment', 'racial_traits']

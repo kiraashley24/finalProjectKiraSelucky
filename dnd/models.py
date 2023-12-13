@@ -50,7 +50,6 @@ class BarbarianDetail(models.Model):
     rages = models.IntegerField()
     rage_damage = models.CharField(max_length=10)
 
-    # Add any other fields needed for Barbarian details
 
     def __str__(self):
         return f"Barbarian Detail - Level {self.level}"
