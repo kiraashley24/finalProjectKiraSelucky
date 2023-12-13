@@ -1,13 +1,23 @@
+
 <!-- character.html -->
 {% extends 'base.html' %}
+{% load static %}
+
 {% block title %}D&D - Character{% endblock %}
+
 {% block content %}
-    <h1>Character Details</h1>
-
-    <p>Name: {{ character_data.name }}</p>
-    <p>Age: {{ character_data.age }}</p>
-    <p>Race: {{ character_data.race }}</p>
-    <p>Class: {{ character_data.classes }}</p>
-    <p>Backstory: {{ character_data.backstory }}</p>
-
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card mb-4 character-card text-center">
+                    <img src="{% static 'dnd/images/characters.jpg' %}" class="card-img-top" alt="home">
+                    <h1>{{ character_data.name }}</h1>
+                    <p>Age: {{ character_data.age }}</p>
+                    <p>Race: {{ character_data.race }}</p>
+                    <p>Class: {{ character_data.classes }}</p>
+                    <p>Backstory: {{ character_data.backstory }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

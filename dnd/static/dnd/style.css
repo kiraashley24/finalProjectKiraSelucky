@@ -52,14 +52,12 @@ tr:nth-child(odd) {
     text-decoration: underline;
 }
 
-/*Card formatting for index page*/
 .card {
     perspective: 1000px;
     width: 600px; /* Adjust the width as needed */
     height: 800px; /* Adjust the height as needed */
     margin: 0 auto; /* Center the card horizontally */
 }
-
 .card-inner {
     width: 100%;
     height: 100%;
@@ -77,6 +75,7 @@ tr:nth-child(odd) {
     height: 100%;
     position: absolute;
     backface-visibility: hidden;
+    margin-bottom: 10px;
 }
 
 .card-front {
@@ -94,3 +93,54 @@ tr:nth-child(odd) {
     justify-content: flex-start; /* Align content to the top */
 }
 
+
+/* Adjust styling for the character card */
+.character-card {
+    width: 400px; /* Adjust the width as needed */
+    height: 400px; /* Set a specific height for the card */
+    margin: 20px auto; /* Add margin for spacing between cards */
+    padding: 20px; /* Add padding within the card to control spacing */
+    box-sizing: border-box; /* Include padding in the total height */
+    margin-bottom: 10px;
+}
+
+/* Adjust font size, colors, and line height as needed */
+.character-card h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px; /* Add some margin between text elements */
+}
+
+.character-card p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.2; /* Adjust line height to reduce spacing */
+    margin-bottom: 10px; /* Add some margin between text elements */
+}
+
+/* style.css */
+.smaller-card {
+    width: 300px; /* Adjust the width as needed */
+    height: 600px; /* Adjust the height as needed */
+    margin: 0 auto; /* Center the card horizontally */
+    margin-top: 20px; /* Add margin for spacing from the top */
+    padding: 20px; /* Add padding within the card to control spacing */
+    box-sizing: border-box; /* Include padding in the total height */
+    /* Add margin to the form groups for spacing */
+    .form-group {
+        margin-bottom: 20px;
+    }
+}
+
+/* Adjust font size, colors, and line height as needed */
+.smaller-card h2 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px; /* Add some margin between text elements */
+}
+
+.smaller-card h6 {
+    font-size: 16px;
+    color: red; /* Adjust color for the message */
+    margin-bottom: 10px; /* Add some margin between text elements */
+}
